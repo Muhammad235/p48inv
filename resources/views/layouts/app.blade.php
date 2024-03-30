@@ -63,7 +63,7 @@
         <div class="header-content responsive-wrapper">
             <div class="header-logo">
                 <a href="">
-                    JobEntry
+                    <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                 </a>
             </div>
             <div class="header-navigation">
