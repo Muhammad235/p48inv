@@ -59,6 +59,12 @@
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
 </head>
 <body>
+
+    <style>
+        .dropdown-toggle{
+            margin-top: 5px;
+        }
+    </style>
     <header class="header">
         <div class="header-content responsive-wrapper">
             <div class="header-logo">
@@ -71,23 +77,80 @@
                     {{-- <a href="#"> Home </a> --}}
                 </nav>
                 <div class="header-navigation-actions">
-                    <i class="text-success fs-2 bi bi-person-check"></i>
+                    <div class="row justify-content-end">
+                        <div class="col-auto d-flex">
 
-                    <a class="username mx-3"> {{auth()->user()->name}}</a>
+                            <div class="">
+                                {{-- <i class="text-success fs-2 bi bi-person-check mx-2 mb-1"></i> --}}
 
-                    <form action="/logout" class="button" method="POST">
-                        @csrf
-                        <button class="btn" type="submit"><span>Logout</span></button>
-                     </form>
-                </div>    
+
+                                {{-- <img src="{{ asset('avatar_img/avatar.png') }}" alt="" width="100"> --}}
+
+                                <img alt="image" src="{{ asset('avatar_img/avatar.png') }}" class="rounded-circle mr-1" width="40">
+
+                            </div>
+
+                            <div class="dropdown mt-2">
+                                {{-- <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Dropdown link
+                                </a> --}}
+
+                                {{-- <i class="text-success fs-2 bi bi-person-check btn dropdown-toggle p-0"  role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"></i> --}}
+
+                                {{-- <div class="mt-2">
+                                    <a class="username mx-3 btn dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> {{ auth()->user()->name }}</a>
+                                </div> --}}
+
+
+                                {{-- <div class="mt-2"> --}}
+                                    <a class="btn-no-outline dropdown-toggle p-3 text-dark" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {{ auth()->user()->name }}
+                                    </a> 
+                                {{-- </div> --}}
+
+                              
+
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                                  {{-- <li><a class="dropdown-item" href="#">Another action</a></li> --}}
+                                  <li>
+                                    
+                                    {{-- <a class="dropdown-item" href="{{ route('logout') }}">Logout</a> --}}
+                                    <form action="{{ route('logout') }}" class="button" method="POST">
+                                        @csrf
+                                        {{-- <button class="btn btn-no-outline " type="submit"><span>Logout</span></button> --}}
+
+                                        <input type="submit" class="btn btn-no-outline" value="Logout">
+                                    </form>
+
+                                   </li>
+                                </ul>
+                            </div>
+                        </div>
+                        {{-- <div class="col-auto">
+                            <form action="/logout" class="button" method="POST">
+                                @csrf
+                                <button class="btn" type="submit"><span>Logout</span></button>
+                            </form>
+                        </div> --}}
+                    </div>
+                </div>
             </div>
         </div>
     </header>
+
+    
 
         <!-- Page Content -->
         {{-- <main> --}}
             {{ $slot }}
         {{-- </main> --}}
 
+
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+

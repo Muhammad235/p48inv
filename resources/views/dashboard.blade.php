@@ -1,73 +1,70 @@
-{{-- @dd(auth()->user()->referrals) --}}
-
 <x-app-layout>
-    <x-slot name="header">
+    <main class="main">
+      
+        <div class="responsive-wrapper">
+          <div class="container mb-4">
+            <div class="row justify-content-between">
 
-        <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Dashboard') }}
-            </h2>
-
-            <div>
-                <label for="price" class="block text-sm font-medium leading-6 text-gray-900">Referral Code</label>
-                <div class="relative mt-2 rounded-md shadow-sm">
-
-                <input type="text" name="price" id="referralCode" class="block w-full rounded-md border-0 py-1.5 pl-5 pr-5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value="{{ auth()->user()->username }}" readonly>
-                    <div class="absolute inset-y-0 right-5 flex items-center">
-
-                        <button type="button" onclick="copyReferralCode()">
-                            <i class="fas fa-copy"></i>
-                        </button>
+              <div class="col-md-3 col-sm-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Total Referred Users</h5>
+                        <div class="d-flex justify-content-center align-items-center">
+                            <i class="fas fa-users fa-3x text-primary"></i> 
+                            <h3 class="ml-2 mb-0">{{ count($userReferrals) }}</h3> 
+                        </div>
                     </div>
                 </div>
             </div>
-  
             
-        </div>
-        
-    </x-slot>
 
-    {{-- <div>
-        @foreach ($userReferrals as $referral)
-        <p>{{ $referral->user->name }}</p> 
-     @endforeach
-    </div> --}}
-
-    <main class="main">
-        <div class="responsive-wrapper">
-            <table class="table bg-white text-center align-middle">
-              <div class="mb-4">
-                <a href="/listings/create" class="btn btn-success">Craete Job Post</a>
+                <div class="col-md-4 col-sm-4">
+                <div>
+                  <label for="referralCode" class="block text-sm font-medium text-gray-900">Referral Code</label>
+                  <div class="input-group mt-2">
+                      <input type="text" name="referralCode" id="referralCode" class="form-control btn-no-outline" value="{{ auth()->user()->username }}" readonly>
+                      <div class="input-group-append">
+                          <button class="btn btn-outline-success" type="button" onclick="copyReferralCode()">
+                              <i class="fas fa-copy"></i>
+                          </button>
+                      </div>
+                  </div>
               </div>
+
+                </div>
+            </div>
+        </div>
+              
+            <table class="table bg-white text-center align-middle">
+
+              {{-- <div class="mb-4">
+                <a href="/listings/create" class="btn btn-success">Craete Job Post</a>
+              </div> --}}
+              
                 <thead>
                   <tr>
                     <th scope="col">S/N</th>
-                    <th scope="col">Logo</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Company</th>
-                    <th scope="col">location</th>
-                    <th scope="col">Website</th>
-                    <th scope="col">Description</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    {{-- <th scope="col">Company</th>
                     <th scope="col">Employment Type</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Action</th> --}}
                   </tr>
                 </thead>
                 <tbody>
     
                   @unless ($userReferrals->isEmpty())
                     
-                  @foreach (@$user_listings as $user_listing)
+                  @foreach (@$userReferrals as $userReferral)
                 
                   <tr>
-                    <th scope="row">{{@$user_listing->id}}</th>
-                    <td>Mark</td>
-                    <td>{{@$user_listing->title}}</td>
-                    <td>{{@$user_listing->company}}</td>
-                    <td>{{@$user_listing->location}}</td>
-                    <td>{{@$user_listing->website}}</td>
-                    <td>{{@$user_listing->description}}</td>
-                    <td >{{@$user_listing->employment_type}}</td>
-                    <td>
+                    <th scope="row">{{@$userReferral->id}}</th>
+                    <td>{{$userReferral->user->name}}</td>
+                    <td>{{$userReferral->user->email}}</td>
+
+                    {{-- <td>{{@$user_listing->location}}</td> --}}
+
+                    {{-- <td>
     
                       <div class="d-flex justify-content-between">
                         <div class="">
@@ -86,12 +83,16 @@
                         </div>
                       </div>
     
-                    </td>
+                    </td> --}}
                   </tr>
                   @endforeach
+                      {{-- pagination  buttons--}}
+                      <div class="mt-5">
+                        <p>{{$userReferrals->links()}}</p> 
+                      </div>
                   @else
                   <tr>
-                    <td colspan="9"><h3 class="text-center p-3 text-success">You don't have any job post created</h3></td>
+                    <td colspan="9"><h3 class="text-center p-3 text-success">You don't have any referred user yet</h3></td>
                   </tr> 
                   @endunless
                 </tbody>
