@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Traits\FileUploadTrait;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,8 @@ use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
+
+    use FileUploadTrait;
     /**
      * Display the user's profile form.
      */
@@ -26,7 +29,22 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+
+        // dd($request->all());
+
+        $request->validated();
+
+        $user = $request->user();
+
+        // Upload image and get new name
+        $imageName = $this->uploadImage($request, 'image', '/avatar_img');
+
+
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'image' => 'new.png'
+        ]);
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
