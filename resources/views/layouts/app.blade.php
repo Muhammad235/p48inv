@@ -86,7 +86,11 @@
 
                                 {{-- <img src="{{ asset('avatar_img/avatar.png') }}" alt="" width="100"> --}}
 
-                                <img alt="image" src="{{ asset('avatar_img/avatar.png') }}" class="rounded-circle mr-1" width="40">
+                                {{-- @if(auth()->user()->image == null) --}}
+                                    <img alt="image" src="{{ auth()->user()->image ?? asset('avatar_img/avatar.png') }}" class="rounded-circle mr-1" width="40">
+                                {{-- @endif --}}
+
+
 
                             </div>
 
