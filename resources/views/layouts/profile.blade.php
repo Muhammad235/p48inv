@@ -7,10 +7,10 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        {{-- <button x-data="{ darkMode: {{ auth()->user()->dark_mode ? 'true' : 'false' } }"
+        {{-- <button x-data="{{ darkMode: {{ auth()->user()->dark_mode ? 'true' : 'false' } }"
         @click="darkMode = !darkMode; $dispatch('dark-mode-toggle', darkMode)">
     Toggle Dark Mode
-</button> --}}
+       </button> --}}
 
 
         <!-- Fonts -->
