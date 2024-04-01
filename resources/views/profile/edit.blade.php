@@ -1,8 +1,14 @@
 <x-profile-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
+
+        <div class="flex justify-between items-center">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('Profile') }}
+            </h2>
+        
+            <img alt="image" src="{{ auth()->user()->image ?? asset('avatar_img/avatar.png') }}" class="rounded-full mr-1" width="40">
+        </div>
+        
     </x-slot>
 
     <div class="py-12">
