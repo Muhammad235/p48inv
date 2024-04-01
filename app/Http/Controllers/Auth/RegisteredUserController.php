@@ -37,11 +37,10 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'phone_no' => ['required', 'max:15', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'username' => ['required', 'string', 'min:8', 'max:10', 'unique:'.User::class],
-            'referring_code' => ['nullable', 'string', 'min:8']
+            'username' => ['required', 'string', 'min:8', 'unique:'.User::class],
+            'referral_id' => ['nullable', 'string', 'min:8', 'exists:users,username']
         ]);
 
-        $referrer_id = generate_refferal_id();
 
         $user = User::create([
             'name' => $request->name,
@@ -59,7 +58,7 @@ class RegisteredUserController extends Controller
 
                 Referral::insert([
                     'user_id' => $user->id, //the user been referred id
-                    'referred_by' => $request->referring_code,   
+                    'referred_by' => $request->referral_id,   
                     'referring_user_id' => $userData[0]['id']  //the user referrering id
                 ]);
 

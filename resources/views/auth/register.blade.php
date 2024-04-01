@@ -56,9 +56,9 @@
 
         <!-- Referral ID -->
         <div class="mt-4">
-            <x-input-label for="referring_code" :value="__('Referral ID (Optional)')" />
-            <x-text-input id="referring_code" class="block mt-1 w-full" type="text" name="referring_code" :value="old('referring_code')"  />
-            <x-input-error :messages="$errors->get('referring_code')" class="mt-2" />
+            <x-input-label for="referral_id" :value="__('Referral ID (Optional)')" />
+            <x-text-input id="referral_id" class="block mt-1 w-full" type="text" name="referral_id" :value="old('referral_id')"  />
+            <x-input-error :messages="$errors->get('referral_id')" class="mt-2" />
         </div>
 
 
