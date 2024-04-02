@@ -22,7 +22,8 @@
                 <div>
                   <label for="referralCode" class="block text-sm font-medium text-gray-900">Referral Code</label>
                   <div class="input-group mt-2">
-                      <input type="text" name="referralCode" id="referralCode" class="form-control btn-no-outline" value="{{ auth()->user()->username }}" readonly>
+                      <input type="text" name="referralCode" id="referralCode" class="form-control btn-no-outline" value="{{ route('register', ['ref' => auth()->user()->username]) }}" readonly>
+
                       <div class="input-group-append">
                           <button class="btn btn-outline-success" type="button" onclick="copyReferralCode()">
                               <i class="fas fa-copy"></i>

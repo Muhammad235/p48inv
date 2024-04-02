@@ -16,9 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('ad', function () {
+    // return view('admin.auth.login');
+    return view('admin.dashboard.index');
+});
 
 
 Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');

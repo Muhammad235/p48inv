@@ -55,12 +55,7 @@
         </div>
 
         <!-- Referral ID -->
-        <div class="mt-4">
-            <x-input-label for="referral_id" :value="__('Referral ID (Optional)')" />
-            <x-text-input id="referral_id" class="block mt-1 w-full" type="text" name="referral_id" :value="old('referral_id')"  />
-            <x-input-error :messages="$errors->get('referral_id')" class="mt-2" />
-        </div>
-
+        <input type="text" value="{{ $referral_id }}" name="referral_id" hidden>
 
         <div class="flex items-center justify-end mt-4">
             <a class="text-sm text-gray-600 hover:text-gray-900 mr-2 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">

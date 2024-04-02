@@ -84,14 +84,16 @@
                                 {{-- <i class="text-success fs-2 bi bi-person-check mx-2 mb-1"></i> --}}
 
 
-                                {{-- <img src="{{ asset('avatar_img/avatar.png') }}" alt="" width="100"> --}}
-
-                                {{-- @if(auth()->user()->image == null) --}}
-                                    <img alt="image" src="{{ auth()->user()->image ?? asset('avatar_img/avatar.png') }}" class="rounded-circle mr-1" width="40">
-                                {{-- @endif --}}
-
-
-
+                                @if (auth()->user()->image == null)
+                                  <a href="{{ route('profile.edit') }}">
+                                    <img alt="image" src="{{ asset('avatar_img/avatar.png') }}" class="rounded-circle mr-1" width="40" height="40"> 
+                                  </a>
+                                @else
+                                <a href="{{ route('profile.edit')  }}">
+                                    <img alt="image" src="{{ asset('avatar_img/' . auth()->user()->image) }}" class="rounded-circle mr-1" width="40" height="40">
+                                </a>
+                                @endif
+                                    
                             </div>
 
                             <div class="dropdown mt-2">

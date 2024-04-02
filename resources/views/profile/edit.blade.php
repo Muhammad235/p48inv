@@ -6,7 +6,16 @@
                 {{ __('Profile') }}
             </h2>
         
-            <img alt="image" src="{{ auth()->user()->image ?? asset('avatar_img/avatar.png') }}" class="rounded-full mr-1" width="40">
+            @if (auth()->user()->image == null)
+            <a href="{{ route('profile.edit') }}">
+              <img alt="image" src="{{ asset('avatar_img/avatar.png') }}" class="rounded-full mr-1" width="40" height="40"> 
+            </a>
+            @else
+            <a href="{{ route('profile.edit')  }}">
+                <img alt="image" src="{{ asset('avatar_img/' . auth()->user()->image) }}" class="rounded-full mr-1" width="40" height="40">
+            </a>
+            @endif
+
         </div>
         
     </x-slot>
