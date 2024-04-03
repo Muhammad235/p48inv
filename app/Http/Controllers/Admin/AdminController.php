@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Referral;
+use App\Models\User;
+use Illuminate\View\View;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 class AdminController extends Controller
 {
@@ -15,10 +17,14 @@ class AdminController extends Controller
     }
 
 
-    public function dashboard()
+    public function dashboard(): View
     {
+        $usersCount = User::where('role', '!=', 'admin')->count();
+        $referredUsersCount = Referral::all()->count();
 
-        return view('admin.dashboard.index');
+        $nonReferredUsersCount = $usersCount - $referredUsersCount;
+
+        return view('admin.dashboard.index', compact('usersCount', 'referredUsersCount', 'nonReferredUsersCount'));
     }
 
     public function edit()
