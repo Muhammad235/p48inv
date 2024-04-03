@@ -15,7 +15,16 @@
           <div class="dropdown-list-content dropdown-list-message">
             <a href="#" class="dropdown-item dropdown-item-unread">
               <div class="dropdown-item-avatar">
-                <img alt="image" src="admin/assets/img/avatar/avatar-1.png" class="rounded-circle">
+                <img alt="{{ asset('avatar_img/avatar.png') }}" src="{{ asset('avatar_img/avatar.png') }}" class="rounded-circle mr-1" width="40" height="40"> 
+                {{-- @if (auth()->user()->image == null)
+                <a href="{{ route('profile.edit') }}">
+                  <img alt="image" src="{{ asset('avatar_img/avatar.png') }}" class="rounded-circle mr-1" width="40" height="40"> 
+                </a>
+              @else
+              <a href="{{ route('profile.edit')  }}">
+                  <img alt="image" src="{{ asset('avatar_img/' . auth()->user()->image) }}" class="rounded-circle mr-1" width="40" height="40">
+              </a>
+              @endif --}}
                 <div class="is-online"></div>
               </div>
               <div class="dropdown-item-desc">
@@ -26,7 +35,7 @@
             </a>
             <a href="#" class="dropdown-item dropdown-item-unread">
               <div class="dropdown-item-avatar">
-                <img alt="image" src="admin/assets/img/avatar/avatar-2.png" class="rounded-circle">
+                <img alt="image" src="{{ asset('avatar_img/avatar.png') }}" class="rounded-circle">
               </div>
               <div class="dropdown-item-desc">
                 <b>Dedik Sugiharto</b>
@@ -36,7 +45,7 @@
             </a>
             <a href="#" class="dropdown-item dropdown-item-unread">
               <div class="dropdown-item-avatar">
-                <img alt="image" src="admin/assets/img/avatar/avatar-3.png" class="rounded-circle">
+                <img alt="image" src="{{ asset('avatar_img/avatar.png') }}" class="rounded-circle">
                 <div class="is-online"></div>
               </div>
               <div class="dropdown-item-desc">
@@ -77,14 +86,13 @@
         
         {{-- <div class="d-sm-none d-lg-inline-block">Hi, {{ auth()->user()->name }}</div></a> --}}
         <div class="dropdown-menu dropdown-menu-right">
-          <div class="dropdown-title">Logged in 5 min ago</div>
           {{-- <a href="{{ route('admin.profile') }}" class="dropdown-item has-icon">
             <i class="far fa-user"></i> Profile
           </a> --}}
-          <a href="features-activities.html" class="dropdown-item has-icon">
-            <i class="fas fa-bolt"></i> Activities
+          <a href="{{ route('admin.profile.edit') }}" class="dropdown-item has-icon">
+            <i class="fas fa-bolt"></i> Profile
           </a>
-          <a href="features-settings.html" class="dropdown-item has-icon">
+          <a href="" class="dropdown-item has-icon">
             <i class="fas fa-cog"></i> Settings
           </a>
           <div class="dropdown-divider"></div>

@@ -13,7 +13,7 @@
           </div>
           <div class="card-wrap">
             <div class="card-header">
-              <h4>Total Admin</h4>
+              <h4>Total Users</h4>
             </div>
             <div class="card-body">
               10
@@ -21,7 +21,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+      {{-- <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
           <div class="card-icon bg-danger">
             <i class="far fa-newspaper"></i>
@@ -35,7 +35,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> --}}
       <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
           <div class="card-icon bg-warning">
@@ -43,7 +43,7 @@
           </div>
           <div class="card-wrap">
             <div class="card-header">
-              <h4>Reports</h4>
+              <h4>Referred users</h4>
             </div>
             <div class="card-body">
               1,201
@@ -58,7 +58,7 @@
           </div>
           <div class="card-wrap">
             <div class="card-header">
-              <h4>Online Users</h4>
+              <h4>Non referred users</h4>
             </div>
             <div class="card-body">
               47
