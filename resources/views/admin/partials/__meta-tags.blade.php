@@ -11,12 +11,14 @@
   <link rel="stylesheet" href="{{ asset('admin/assets/modules/fontawesome/css/all.min.css') }}">
   <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
 
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css') }}">
   {{-- <link rel="stylesheet" href="{{ asset('admin/assets/css/components.css') }}"> --}}
 <!-- Start GA -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
+
 
 </head>
 
@@ -26,7 +28,8 @@
     @if ($errors->any())
         @foreach ($errors->all() as $error)
         @php
-         toastr()->error("$error")
+        //  toastr()->error("$error")
+        //  toastr.error("$error")
         @endphp
         @endforeach
     @endif

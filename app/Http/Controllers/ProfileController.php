@@ -29,7 +29,7 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
- 
+
         $userData = $request->validated();
 
         // Retrieve user
@@ -46,6 +46,10 @@ class ProfileController extends Controller
         }
 
         $request->user()->save();
+
+        if ($request->user()->role === 'admin') {
+            return Redirect::route('admin.profile.edit')->with('status', 'profile-updated');
+       }
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }

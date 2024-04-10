@@ -22,9 +22,23 @@ class UsersDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'users.action')
+            // ->addColumn('action', 'users.action')
+            ->addColumn('referrals', function($query){
+                $showReferal = "<button type='button' class='btn btn-success show-modal' data-toggle='modal' data-target='#exampleModalLong' data-id='{{$query->username}}'> <i class='fas fa-caret-down'> </i> 
+                Show more
+                </button>";
+    
+                return $showReferal;
+            })
+            ->addColumn('joined_at(Y-m-d)', function ($query) {
+                // $dateFormat = $query->created_at->format('Y-m-d H:i:s');
+
+                return $query->created_at;
+            })
+            ->rawColumns(['action', 'referrals', 'joined_at(Y-m-d)'])
             ->setRowId('id');
     }
+
 
     /**
      * Get the query source of dataTable.
@@ -44,7 +58,7 @@ class UsersDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0,'ASC')
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -62,15 +76,17 @@ class UsersDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
             Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('name'),
+            Column::make('email'),
+            Column::make('referrals'),
+            Column::make('joined_at(Y-m-d)'),
+            // Column::make('updated_at'),
+            // Column::computed('action')
+            //         ->exportable(false)
+            //         ->printable(false)
+            //         ->width(60)
+            //         ->addClass('text-center'),
         ];
     }
 

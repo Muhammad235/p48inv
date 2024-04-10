@@ -29,8 +29,8 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 
   <script src="{{ asset('admin/assets/modules/jquery.min.js') }}"></script>
-  <script src="{{ asset('admin/assets/modules/popper.js') }}"></script>
-  <script src="{{ asset('admin/assets/modules/tooltip.js') }}"></script>
+  {{-- <script src="{{ asset('admin/assets/modules/popper.js') }}"></script> --}}
+  {{-- <script src="{{ asset('admin/assets/modules/tooltip.js') }}"></script> --}}
   <script src="{{ asset('admin/assets/modules/bootstrap/js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('admin/assets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
   {{-- <script src="{{ asset('admin/assets/modules/moment.min.js') }}"></script> --}}
@@ -45,9 +45,10 @@
   <script src="{{ asset('admin/assets/modules/jqvmap/dist/maps/jquery.vmap.world.js') }}"></script>
   <script src="{{ asset('admin/assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script> --}}
 
+  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script src="{{ asset('admin/assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js')}}"></script>
-  <script src="{{ asset('admin/assets/modules/bootstrap-iconpicker/js/bootstrap-iconpicker.bundle.min.js')}}"></script>
-  <script src="{{ asset('admin/assets/modules/summernote/summernote-bs4.js') }}"></script>
+  {{-- <script src="{{ asset('admin/assets/modules/bootstrap-iconpicker/js/bootstrap-iconpicker.bundle.min.js')}}"></script> --}}
+  {{-- <script src="{{ asset('admin/assets/modules/summernote/summernote-bs4.js') }}"></script> --}}
   <!-- Page Specific JS File -->
   <script src="{{ asset('admin/assets/js/page/upload-preview.js') }}"></script>
 

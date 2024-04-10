@@ -9,7 +9,17 @@
      
       <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
 
-        <img alt="image" src="{{ asset('avatar_img/avatar.png') }}" class="rounded-circle mr-1">
+        {{-- <img alt="image" src="{{ asset('avatar_img/avatar.png') }}" class="rounded-circle mr-1"> --}}
+
+        @if (auth()->user()->image == null)
+        {{-- <a href="{{ route('profile.edit') }}"> --}}
+          <img alt="image" src="{{ asset('avatar_img/avatar.png') }}" class="rounded-circle mr-1"> 
+        {{-- </a> --}}
+      @else
+      {{-- <a href="{{ route('profile.edit')  }}"> --}}
+          <img alt="image" src="{{ asset('avatar_img/' . auth()->user()->image) }}" class="rounded-circle mr-1">
+      {{-- </a> --}}
+      @endif
         
         <div class="d-sm-none d-lg-inline-block">Hi, {{ auth()->user()->name }}</div></a>
         <div class="dropdown-menu dropdown-menu-right">
@@ -20,7 +30,7 @@
             <i class="fas fa-cog"></i> Settings
           </a>
           <div class="dropdown-divider"></div>
-          <form method="POST" action="{{ route('logout') }}">
+          <form method="POST" action="{{ route('admin.logout') }}">
             @csrf
 
             <a href="#" onclick="event.preventDefault();
@@ -46,7 +56,7 @@
       <ul class="sidebar-menu">
         <li class="menu-header">Dashboard</li>
         <li class="active">
-          <a href="" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+          <a href="{{ route('admin.dashboard') }}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
         </li>
         {{-- <li class="menu-header">Starter</li> --}}
         {{-- <li><a class="nav-link" href="{{ route('admin.slider.index') }}"><i class="far fa-square"></i> <span>Slider</span></a></li>

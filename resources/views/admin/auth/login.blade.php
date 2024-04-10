@@ -28,11 +28,11 @@
                   <div class="form-group">
                     <div class="d-block">
                     	<label for="password" class="control-label">Password</label>
-                      <div class="float-right">
+                      {{-- <div class="float-right">
                         <a href="auth-forgot-password.html" class="text-small text-success">
                           Forgot Password?
                         </a>
-                      </div>
+                      </div> --}}
                     </div>
                     <input id="password" type="password" class="form-control" name="password" tabindex="2">
                     <div class="invalid-feedback">
@@ -42,8 +42,8 @@
 
                   <div class="form-group">
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" name="remember"  value="{{ old('remember') }}" class="custom-control-input" tabindex="3" id="remember-me">
-                      <label class="custom-control-label" for="remember-me">Remember Me</label>
+                      <input type="checkbox" name="remember_me"  value="{{ old('remember_me') }}" class="custom-control-input" tabindex="3" id="remember_me">
+                      <label class="custom-control-label" for="remember_me">Remember Me</label>
                     </div>
                   </div>
 

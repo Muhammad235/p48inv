@@ -3,35 +3,59 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-      <h1>Update User</h1>
+      <h1>Profile update</h1>
     </div>
 
     <div class="section-body">
         <div class="card card-primary">
             <div class="card-header">
-              <h4>Update User settings</h4>
+              <h4>Profile Information</h4>
             </div>
             <div class="card-body">
-              <form enctype="multipart/form-data" method="POST" action="{{ route('admin.profile.update') }}">
+              <form enctype="multipart/form-data" method="POST" action="{{ route('profile.update') }}">
                 @csrf
-                @method('PUT')
+                @method('patch')
                 <div class="form-group">
                     <div class="col-sm-12 col-md-7">
                         <div id="image-preview" class="image-preview">
                           <label for="image-upload" id="image-label">Choose File</label>
-                          <input type="file" name="avatar" id="image-upload" />
+                          <input type="file" name="image" id="image-upload" />
+                          
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Name</label>
                     <input type="text" class="form-control" name="name" value="{{ auth()->user()->name }}">
+                    @error('name')
+                      <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label>Email</label>
                     <input type="email" class="form-control" name="email" value="{{ auth()->user()->email }}">
+                    @error('email')
+                      <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
+
+                <div class="form-group">
+                  <label>Username</label>
+                  <input type="text" class="form-control" name="username" value="{{ auth()->user()->username }}">
+                  @error('username')
+                    <p class="text-danger">{{ $message }}</p>
+                  @enderror
+                </div>
+
+                <div class="form-group">
+                  <label>Phone Number</label>
+                  <input type="text" class="form-control" name="phone_no" value="{{ auth()->user()->phone_no }}">
+                  @error('phone_no')
+                    <p class="text-danger">{{ $message }}</p>
+                  @enderror
+                </div>
+
                   <button class="btn btn-primary" type="submit">Save</button>
               </form>
             </div>
@@ -48,16 +72,25 @@
                 <div class="form-group">
                     <label>Current Password</label>
                     <input type="password" class="form-control" name="current_password">
+                    @error('current_password')
+                      <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label>New Password</label>
                     <input type="password" class="form-control" name="password">
+                    @error('password')
+                      <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <div class="form-group">
                     <label>Confirm Password</label>
                     <input type="password" class="form-control" name="password_confirmation">
+                    @error('password_confirmation')
+                      <p class="text-danger">{{ $message }}</p>
+                    @enderror
                 </div>
 
                 <button class="btn btn-primary" type="submit">Save</button>
