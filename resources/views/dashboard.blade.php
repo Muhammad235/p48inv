@@ -36,20 +36,12 @@
             </div>
         </div>
               
-            <table class="table bg-white text-center align-middle">
-
-              {{-- <div class="mb-4">
-                <a href="/listings/create" class="btn btn-success">Craete Job Post</a>
-              </div> --}}
-              
+            <table class="table bg-white text-center align-middle"> 
                 <thead>
                   <tr>
                     <th scope="col">S/N</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
-                    {{-- <th scope="col">Company</th>
-                    <th scope="col">Employment Type</th>
-                    <th scope="col">Action</th> --}}
                   </tr>
                 </thead>
                 <tbody>
@@ -97,7 +89,7 @@
                   </tr> 
                   @endunless
                 </tbody>
-              </table>
+            </table>
         </div>
     </main> 
 

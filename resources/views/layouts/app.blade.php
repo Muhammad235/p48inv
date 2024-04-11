@@ -54,7 +54,7 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
-    <title>Document</title>
+    <title>{{ config('app.name', 'P48InvestmentLtd') }}</title>
     
     <link rel="stylesheet" href="{{asset('css/dashboard.css')}}">
 </head>

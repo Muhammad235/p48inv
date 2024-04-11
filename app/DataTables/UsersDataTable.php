@@ -23,9 +23,18 @@ class UsersDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             // ->addColumn('action', 'users.action')
+            ->addColumn('id', function($query){
+                // foreach($query as $index){
+                //     return ++$index;
+                // }
+
+
+                // return $query;
+            })
+
             ->addColumn('referrals', function($query){
-                $showReferal = "<button type='button' class='btn btn-success show-modal' data-toggle='modal' data-target='#exampleModalLong' data-id='{{$query->username}}'> <i class='fas fa-caret-down'> </i> 
-                Show more
+                $showReferal = "<button type='button' class='btn show-modal text-white' data-toggle='modal' data-target='#exampleModalLong' data-id='{{$query->username}}' style='background-color:#009933;'>  
+                View Referrals  <i class='fas fa-caret-down'> </i>
                 </button>";
     
                 return $showReferal;

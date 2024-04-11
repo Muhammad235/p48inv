@@ -8,7 +8,7 @@
     <div class="row">
       <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
-          <div class="card-icon bg-primary">
+          <div class="card-icon" style='background-color:#009933;'>
             <i class="far fa-user"></i>
           </div>
           <div class="card-wrap">
@@ -45,7 +45,7 @@
       </div>
       <div class="col-lg-3 col-md-6 col-sm-6 col-12">
         <div class="card card-statistic-1">
-          <div class="card-icon bg-success">
+          <div class="card-icon" style='background-color:#009933;'>
             <i class="far fa-user"></i>
           </div>
           <div class="card-wrap">
@@ -110,8 +110,9 @@
         data: { id: id },
         success: function(response) {
             
-            // $('.modal-body').html(response);
-            console.log(response);
+          console.log(response);
+
+            $('.modal-body').html(response);
         },
         error: function(xhr, status, error) {
             console.error(error);

@@ -55,17 +55,20 @@ class AdminController extends Controller
         // return ($request->all());
 
         $request->username = 'adeleke01';
+        // $userReferrals = Referral::with('user')->where('referred_by',  $request->username)->get();
+
+        // return view('render.referral-modal', compact('userReferrals'))->render();
 
         try {
+            
             $user = Referral::with('user')->where('referred_by',  $request->username)->get();
+
             return $user;
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json(['error' => 'User not found'], 404);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
-        
-        
         
     }
 }
