@@ -36,16 +36,14 @@ class DatabaseSeeder extends Seeder
 
         // $users = \App\Models\User::factory(11)->create();
 
-        // $referringUser = \App\Models\User::where('username', 'adeleke01')->first();
+        // $referringUser = \App\Models\User::where('username', 'test01')->first();
 
         // foreach ($users as $user) {
         //     \App\Models\Referral::create([
         //         'user_id' => $user->id,
-        //         'referred_by' => 'adeleke01',
+        //         'referred_by' => 'test01',
         //         'referring_user_id' => $referringUser->id,
         //     ]);
         // }
-
-
     }
 }
