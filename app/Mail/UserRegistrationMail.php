@@ -14,13 +14,14 @@ class UserRegistrationMail extends Mailable
     use Queueable, SerializesModels;
 
     public $name;
-
+    public $referral_id;
     /**
      * Create a new message instance.
      */
-    public function __construct($data)
+    public function __construct($user)
     {
-        $this->name = $data['name'];
+        $this->name = $user['name'];
+        $this->referral_id = $user['username'];
     }
 
     /**
@@ -29,7 +30,7 @@ class UserRegistrationMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'User Registration Mail',
+            subject: "Welcome to " . config('app.name', 'P48InvestmentLtd') ." !🎉",
         );
     }
 

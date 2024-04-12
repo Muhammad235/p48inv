@@ -21,7 +21,6 @@ Route::get('/mail-preview', function(){
     $data = [
         'name' => 'muhammad',
         'referral_id' => 'adeleke01',
-        'referral_link' => 'http://127.0.0.1:8000?ref=adeleke01',
     ];
 
     $mail  = new UserRegistrationMail($data);

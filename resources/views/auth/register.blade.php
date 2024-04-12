@@ -54,8 +54,12 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <!-- Referral ID -->
-        <input type="text" value="{{ $referral_id }}" name="referral_id" hidden>
+        <!-- Phone Number -->
+        <div class="mt-4">
+            <x-input-label for="referral_id" :value="__('Referral ID (Optional)')" />
+            <x-text-input id="referral_id" class="block mt-1 w-full" type="text" name="referral_id" value="{{ $referral_id }}" />
+            <x-input-error :messages="$errors->get('referral_id')" class="mt-2" />
+        </div>
 
         <div class="flex items-center justify-center mt-5">
             <x-primary-button class="ms-4">

@@ -6,9 +6,11 @@ use App\Models\User;
 use App\Models\Referral;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use App\Mail\UserRegistrationMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
@@ -54,6 +56,8 @@ class RegisteredUserController extends Controller
         }
 
         event(new Registered($user));
+
+        Mail::to($request->email)->send(new UserRegistrationMail($user));
 
         Auth::login($user);
 
