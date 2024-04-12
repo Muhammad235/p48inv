@@ -14,14 +14,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        // \App\Models\User::create([
-        //     'name' => 'Muhammad Yahaya',
-        //     'email' => 'adelekeyahaya05@gmail.com',
-        //     'phone_no' => '09031389842',
-        //     'password' => Hash::make('okikiola(m)'),
-        //     'username' => 'adeleke01',
-        // ]);
-
         \App\Models\User::insert([
             [
                 'name' => 'Admin',
@@ -32,12 +24,12 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make('admin'),
             ],
             [
-                'name' => 'Muhammad Yahaya',
-                'email' => 'adelekeyahaya05@gmail.com',
-                'phone_no' => '09031389842',
+                'name' => 'Test User',
+                'email' => 'test@gmail.com',
+                'phone_no' => '09051787849',
                 'role' => 'user',
-                'username' => 'adeleke01',
-                'password' => Hash::make('okikiola(m)'),
+                'username' => 'test01',
+                'password' => Hash::make('testing01'),
             ],
         ]);
 

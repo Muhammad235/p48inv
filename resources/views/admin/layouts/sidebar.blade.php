@@ -9,16 +9,11 @@
      
       <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
 
-        {{-- <img alt="image" src="{{ asset('avatar_img/avatar.png') }}" class="rounded-circle mr-1"> --}}
 
         @if (auth()->user()->image == null)
-        {{-- <a href="{{ route('profile.edit') }}"> --}}
           <img alt="image" src="{{ asset('avatar_img/avatar.png') }}" class="rounded-circle mr-1"> 
-        {{-- </a> --}}
       @else
-      {{-- <a href="{{ route('profile.edit')  }}"> --}}
           <img alt="image" src="{{ asset('avatar_img/' . auth()->user()->image) }}" class="rounded-circle mr-1">
-      {{-- </a> --}}
       @endif
         
         <div class="d-sm-none d-lg-inline-block">Hi, {{ auth()->user()->name }}</div></a>
@@ -51,7 +46,7 @@
         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
       </div>
       <div class="sidebar-brand sidebar-brand-sm">
-        <a href="index.html">St</a>
+        <a href="index.html">P48</a>
       </div>
       <ul class="sidebar-menu">
         <li class="menu-header" style='color:#009933;'>Dashboard</li>

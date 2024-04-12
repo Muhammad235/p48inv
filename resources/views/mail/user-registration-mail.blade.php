@@ -11,7 +11,7 @@ Your Referral Link: <a href="{{ url("?ref=$referral_id") }}" target="_blank">{{ 
 <b>You can also find your referral code and link conveniently on your dashboard once you log in.</b>
 
 If you have any questions or need assistance, feel free to reach out to our support team at 
-{{ config('app.mail_from_address') }}.
+{{ config('app.mail_address') }}.
 
 
 {{-- Warm regards,

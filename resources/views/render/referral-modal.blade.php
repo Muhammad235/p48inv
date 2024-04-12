@@ -1,7 +1,13 @@
 
 {{-- @dump($userReferrals) --}}
 
-<table class="table border bg-white text-center align-middle"> 
+<style>
+  .referral-table{
+    overflow-x: scroll;
+  }
+</style>
+
+<table class="table border bg-white text-center align-middle referral-table"> 
   <thead>
     <tr>
       <th scope="col">S/N</th>

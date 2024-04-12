@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Models\Referral;
+use App\Services\UserService;
 use Illuminate\View\View;
+use App\Mail\ReferralMail;
 use Illuminate\Http\Request;
 use App\Mail\UserRegistrationMail;
 use App\Http\Controllers\Controller;
@@ -57,10 +59,13 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Mail::to($request->email)->send(new UserRegistrationMail($user));
+        $userService = new UserService($request);
+        $userService->sendUserRegistrationEmail();
+        $userService->sendReferralUserEmail();
+
 
         Auth::login($user);
-
+        
         return redirect(RouteServiceProvider::HOME);
     }
 }
