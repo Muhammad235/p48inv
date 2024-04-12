@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserController;
+use App\Mail\UserRegistrationMail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/mail-preview', function(){
+    $data = [
+        'name' => 'muhammad',
+        'referral_id' => 'adeleke01',
+        'referral_link' => 'http://127.0.0.1:8000?ref=adeleke01',
+    ];
+
+    $mail  = new UserRegistrationMail($data);
+    
+    echo $mail->render();
+
+})->name('mail');
 
 
 Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
