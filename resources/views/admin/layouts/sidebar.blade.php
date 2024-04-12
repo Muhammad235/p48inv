@@ -54,9 +54,9 @@
         <a href="index.html">St</a>
       </div>
       <ul class="sidebar-menu">
-        <li class="menu-header">Dashboard</li>
-        <li class="active">
-          <a href="{{ route('admin.dashboard') }}" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+        <li class="menu-header" style='color:#009933;'>Dashboard</li>
+        <li class="active" >
+          <a href="{{ route('admin.dashboard') }}" style='color:#009933;' class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
         </li>
         {{-- <li class="menu-header">Starter</li> --}}
         {{-- <li><a class="nav-link" href="{{ route('admin.slider.index') }}"><i class="far fa-square"></i> <span>Slider</span></a></li>

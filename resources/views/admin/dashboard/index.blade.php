@@ -70,23 +70,21 @@
 </section>
 
 
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Referred User list</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn text-white" data-dismiss="modal" style='background-color:#009933;'>Close</button>
       </div>
     </div>
   </div>
@@ -102,16 +100,16 @@
     <script>
 
     $(document).on('click', '.show-modal', function() {
-    var id = $(this).data('id');
+    var referred_by = $(this).data('referred_by');
+
+    console.log(referred_by);
 
     $.ajax({
         url: "{{ route('admin.referral.details') }}", 
         method: 'GET',
-        data: { id: id },
+        data: { referred_by: referred_by },
         success: function(response) {
             
-          console.log(response);
-
             $('.modal-body').html(response);
         },
         error: function(xhr, status, error) {

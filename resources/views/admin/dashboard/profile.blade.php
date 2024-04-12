@@ -7,7 +7,7 @@
     </div>
 
     <div class="section-body">
-        <div class="card card-primary">
+        <div class="card" style="border-top:2px #009933 solid;">
             <div class="card-header">
               <h4>Profile Information</h4>
             </div>
@@ -56,12 +56,12 @@
                   @enderror
                 </div>
 
-                  <button class="btn btn-primary" type="submit">Save</button>
+                  <button class="btn text-white" type="submit" style="background-color:#009933;">Save</button>
               </form>
             </div>
         </div>
 
-        <div class="card card-primary">
+        <div class="card" style="border-top:2px #009933 solid;">
             <div class="card-header">
               <h4>Update Password</h4>
             </div>
@@ -93,7 +93,7 @@
                     @enderror
                 </div>
 
-                <button class="btn btn-primary" type="submit">Save</button>
+                <button class="btn text-white" type="submit" style="background-color:#009933;">Save</button>
               </form>
             </div>
         </div>

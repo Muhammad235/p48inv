@@ -3,14 +3,15 @@
 namespace App\DataTables;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Builder as QueryBuilder;
-use Yajra\DataTables\EloquentDataTable;
-use Yajra\DataTables\Html\Builder as HtmlBuilder;
+use App\Models\Referral;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
+use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use Yajra\DataTables\Html\Builder as HtmlBuilder;
+use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 
 class UsersDataTable extends DataTable
 {
@@ -23,24 +24,28 @@ class UsersDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             // ->addColumn('action', 'users.action')
-            ->addColumn('id', function($query){
-                // foreach($query as $index){
-                //     return ++$index;
-                // }
 
-
-                // return $query;
-            })
+            // ->addColumn('id', function($query) {
+            //     $output = '';
+            
+            //     for ($i = 0; $i < $query->count(); $i++) { 
+            //         $output .= $i . ', ';
+            //     }
+            
+            //     return rtrim($output, ', '); // Remove trailing comma and space
+            // })
 
             ->addColumn('referrals', function($query){
-                $showReferal = "<button type='button' class='btn show-modal text-white' data-toggle='modal' data-target='#exampleModalLong' data-id='{{$query->username}}' style='background-color:#009933;'>  
-                View Referrals  <i class='fas fa-caret-down'> </i>
+
+                $referrals = Referral::with('user')->where('referred_by',  $query->username)->count();
+
+                $showReferal = "<button type='button' class='btn show-modal text-white' data-toggle='modal' data-target='#exampleModalLong' data-referred_by='$query->username' style='background-color:#009933;'>  
+                View Referrals ($referrals) <i class='fas fa-caret-down'> </i>
                 </button>";
     
                 return $showReferal;
             })
             ->addColumn('joined_at(Y-m-d)', function ($query) {
-                // $dateFormat = $query->created_at->format('Y-m-d H:i:s');
 
                 return $query->created_at;
             })

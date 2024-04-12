@@ -4,7 +4,7 @@
 <body>
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
-      <div class="navbar-bg"></div>
+      <div class="navbar-bg" style="background-color:#009933;"></div>
 
         @include('admin.layouts.sidebar')
 
