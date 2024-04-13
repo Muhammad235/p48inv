@@ -1,7 +1,5 @@
 <x-mail::message>
 
-<img src="{{ asset('logo.png') }}" alt="" width="100%" height="170px" style="margin-bottom: 30px;">
-
 # Hi, {{ $name }}
 
 Welcome to {{config('app.name', 'P48InvestmentLtd')}}! We're thrilled to have you on board.
