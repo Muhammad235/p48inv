@@ -20,7 +20,7 @@ use App\Http\Controllers\ProfileController;
 // Route::get('/mail-preview', function(){
 //     $data = [
 //         'name' => 'muhammad',
-//         'referral_id' => 'adeleke01',
+//         'username' => 'adeleke01',
 //     ];
 
 //     $mail  = new UserRegistrationMail($data);
