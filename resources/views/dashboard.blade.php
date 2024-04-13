@@ -20,12 +20,24 @@
 
                 <div class="col-md-4 col-sm-4">
                 <div>
-                  <label for="referralCode" class="block text-sm font-medium text-gray-900">Referral Code</label>
+
+                  <label for="referralCode" class="block text-sm font-medium text-gray-900">Referral ID</label>
                   <div class="input-group mt-2">
-                      <input type="text" name="referralCode" id="referralCode" class="form-control btn-no-outline" value="{{ route('register', ['ref' => auth()->user()->username]) }}" readonly>
+                      <input type="text" name="referralCode" id="referralId" class="form-control btn-no-outline" value="{{ route('register', ['ref' => auth()->user()->username]) }}" readonly>
 
                       <div class="input-group-append">
-                          <button class="btn btn-outline-success" type="button" onclick="copyReferralCode()">
+                          <button class="btn btn-outline-success" type="button" onclick="copyReferralId()">
+                              <i class="fas fa-copy"></i>
+                          </button>
+                      </div>
+                  </div>
+
+                  <label for="referralCode" class="block text-sm font-medium text-gray-900 mt-3">Referral Code</label>
+                  <div class="input-group mt-2">
+                      <input type="text" name="referralCode" id="referralCode" class="form-control btn-no-outline" value="{{ auth()->user()->username }}" readonly>
+
+                      <div class="input-group-append">
+                          <button class="btn btn-outline-success" type="button" onclick="copyReferralCode()"> 
                               <i class="fas fa-copy"></i>
                           </button>
                       </div>
@@ -98,6 +110,14 @@
 
 
 <script>
+    function copyReferralId() {
+        var copyText = document.getElementById("referralId");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+        document.execCommand("copy");
+        alert("Referral code copied to clipboard: " + copyText.value);
+    }
+
     function copyReferralCode() {
         var copyText = document.getElementById("referralCode");
         copyText.select();
