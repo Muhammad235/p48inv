@@ -46,7 +46,7 @@
         </div>
  
 
-            <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+            <div class="col-lg-11 col-md-8 col-12 col-sm-12 m-auto">
               <div class="card">
                 <div class="card-header">
                   <h4>Referred User List</h4>
@@ -55,8 +55,8 @@
                   </div>
                 </div>
                 <div class="card-body p-0">
-                  <div class="table-responsive">
-                    <table class="table table-striped mb-0">
+                  <div class="table-responsive text-center">
+                    <table class="table mb-0">
                       <thead>
                         <tr>
                           <th>S/N</th>
@@ -69,13 +69,13 @@
                         @foreach (@$userReferrals as $userReferral)                     
                         <tr>
                           <td>
-                            {{@$userReferral->id}}
+                            {{ ++$loop->index }}
                           </td>
                           <td>
-                            <p>{{$userReferral->user->name}}</p>
+                            {{$userReferral->user->name}}
                           </td>
                           <td>
-                            <p>{{$userReferral->user->email}}</p>
+                          {{$userReferral->user->email}}
                           </td>
                         </tr>
                         @endforeach
@@ -84,14 +84,12 @@
                         <div class="mt-5">
                           <p>{{$userReferrals->links()}}</p> 
                         </div>
-
                         @endif
                      
                         @else
                         <tr>
                           <td colspan="9"><h3 class="text-center p-3 text-success">You don't have any referred user yet</h3></td>
                         </tr> 
-
                         @endunless
                       </tbody>
                     </table>
