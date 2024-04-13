@@ -3,7 +3,7 @@
         <div class="col-lg-12">
             <div class="text-center mb-5">
                 <h1 class="display-2 fw-medium">Session Expired</h1>
-                <h4 class="text-uppercase">Your session timed out. To continue your transaction, please sign in again.</h4>
+                <h4 class="text-uppercase">Your session timed out. Please sign in again.</h4>
                 <div class="mt-5 text-center">
                     <a class="btn btn-primary waves-effect waves-light"  href="{{ route('register') }}">Sign in</a>
                 </div>
