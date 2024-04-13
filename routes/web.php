@@ -17,17 +17,30 @@ use App\Http\Controllers\ProfileController;
 */
 
 
-Route::get('/mail-preview', function(){
-    $data = [
-        'name' => 'muhammad',
-        'username' => 'adeleke01',
-    ];
+// Route::get('/mail-preview', function(){
+//     $data = [
+//         'name' => 'muhammad',
+//         'username' => 'adeleke01',
+//     ];
 
-    $mail  = new UserRegistrationMail($data);
+//     $mail  = new UserRegistrationMail($data);
     
-    echo $mail->render();
+//     echo $mail->render();
 
-})->name('mail');
+// })->name('mail');
+
+
+Route::get('/404', function(){
+    return view('errors.404');
+});
+
+Route::get('/419', function(){
+    return view('errors.419');
+});
+
+Route::get('/500', function(){
+    return view('errors.500');
+});
 
 
 Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
