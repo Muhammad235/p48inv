@@ -21,7 +21,7 @@
                 <div class="col-md-4 col-sm-4">
                 <div>
 
-                  <label for="referralCode" class="block text-sm font-medium text-gray-900">Referral ID</label>
+                  <label for="referralCode" class="block text-sm font-medium text-gray-900">Referral Link</label>
                   <div class="input-group mt-2">
                       <input type="text" name="referralCode" id="referralId" class="form-control btn-no-outline" value="{{ route('register', ['ref' => auth()->user()->username]) }}" readonly>
 
