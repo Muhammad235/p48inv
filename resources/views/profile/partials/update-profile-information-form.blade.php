@@ -17,11 +17,51 @@
         @csrf
         @method('patch')
 
-        <div>
+        {{-- <div>
             <x-input-label for="image" :value="__('Profile Image')" />
             <x-text-input id="image" name="image" type="file" class="mt-1 block w-full" autofocus />
             <x-input-error class="mt-2" :messages="$errors->get('image')" />
+        </div> --}}
+
+        {{-- <div class="mt-4">
+            <label for="image" class="block text-sm font-medium text-gray-700">Edit Profile Image</label>
+            <div class="mt-1 flex items-center">
+                <label for="image" class="relative cursor-pointer bg-white rounded-md font-medium text-grey-600 hover:text-grey-500">
+                    <span>Upload a file</span>
+                    <input id="image" name="image" type="file" class="sr-only">
+                </label>
+                <span class="ml-2" id="image-file-name"></span>
+            </div>
+            <x-input-error class="mt-2" :messages="$errors->get('image')" />
+        </div> --}}
+
+        <div class="mt-4">
+            <label for="image" class="block text-sm font-medium text-gray-700">Profile Image</label>
+            <div class="mt-1 flex items-center">
+                <!-- Image Preview Container -->
+                <div class="h-12 w-12 rounded-full overflow-hidden">
+
+                    @php
+                        $avatar = 'avatar.png';
+                        $dd = auth()->user()->image ?? $avatar;
+                    @endphp
+                    <img id="imagePreview" src="{{ asset('avatar_img/'. $dd) }}" alt="Preview" class="h-full w-full object-cover">
+                </div>
+                <!-- Upload Button -->
+                <label for="image" class="cursor-pointer ml-2 bg-white rounded-md border border-gray-300 p-2 flex items-center justify-center text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                    <span class="ml-2">Select Image</span>
+                    <input id="image" name="image" type="file" class="sr-only" autofocus />
+                </label>
+            </div>
+            @error('image')
+            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+            @enderror
         </div>
+        
+        
 
         <div>
             <x-input-label for="name" :value="__('Name')" />
@@ -80,3 +120,25 @@
         </div>
     </form>
 </section>
+
+
+{{-- @push('script') --}}
+<script>
+    // JavaScript for Image Preview
+    const imageInput = document.getElementById('image');
+    const imagePreview = document.getElementById('imagePreview');
+
+    imageInput.addEventListener('change', function () {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                imagePreview.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        } else {
+            imagePreview.src = '#';
+        }
+    });
+</script>
+{{-- @endpush --}}

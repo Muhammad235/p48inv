@@ -22,7 +22,7 @@
     </style>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 bg-gray-900">
-            @include('layouts.navigation')
+            {{-- @include('layouts.navigation') --}}
 
             <!-- Page Heading -->
             @if (isset($header))
@@ -43,3 +43,5 @@
         </div>
     </body>
 </html>
+
+@stack('scripts')
