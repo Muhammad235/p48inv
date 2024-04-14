@@ -1,6 +1,14 @@
 <x-profile-layout>
     <x-slot name="header">
 
+        <style>
+            .profile-avatar{
+               width: 50px; 
+               height: 50px;
+               border-radius: 50%;
+            }
+        </style>
+
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Profile') }}
@@ -12,7 +20,7 @@
             </a>
             @else
             <a href="{{ route('profile.edit')  }}">
-                <img alt="image" src="{{ asset('avatar_img/' . auth()->user()->image) }}" class="rounded-full mr-1" width="40" height="40">
+                <img alt="image" src="{{ asset('avatar_img/' . auth()->user()->image) }}" class="profile-avatar h-100">
             </a>
             @endif
 
