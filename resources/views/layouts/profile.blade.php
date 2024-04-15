@@ -36,11 +36,17 @@
 
             <!-- Page Content -->
             <main>
-            
-
                 {{ $slot }}
             </main>
         </div>
+
+        <hr>
+        <footer class="text-center text-gray-500 p-4 mt-4">
+          <div class="">
+            <p class="text-center">
+            @php echo date('Y') @endphp  P48 Investment Ltd. All Rights Reserved. 
+          </p>
+        </footer>
     </body>
 </html>
 

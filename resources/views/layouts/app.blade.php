@@ -92,10 +92,18 @@
             {{ $slot }}
         {{-- </main> --}}
 
+        <hr>
+        <footer class="text-center mt-4">
+          <div class="">
+            <p class="text-center">
+            @php echo date('Y') @endphp  P48 Investment Ltd. All Rights Reserved. 
+          </p>
+        </footer>
 
-        <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 

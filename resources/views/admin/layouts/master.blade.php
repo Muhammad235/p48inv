@@ -15,10 +15,8 @@
       
       <footer class="main-footer">
         <div class="footer-left">
-          Copyright &copy; @php  @endphp <div class="bullet"></div> 
-        </div>
+          @php echo date('Y') @endphp  P48 Investment Ltd. All Rights Reserved. 
         <div class="footer-right">
-          
         </div>
       </footer>
     </div>
