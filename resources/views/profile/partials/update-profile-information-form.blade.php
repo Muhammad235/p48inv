@@ -1,6 +1,6 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h2 class="text-lg font-medium main-color" >
             {{ __('Profile Information') }}
         </h2>
 
@@ -17,23 +17,6 @@
         @csrf
         @method('patch')
 
-        {{-- <div>
-            <x-input-label for="image" :value="__('Profile Image')" />
-            <x-text-input id="image" name="image" type="file" class="mt-1 block w-full" autofocus />
-            <x-input-error class="mt-2" :messages="$errors->get('image')" />
-        </div> --}}
-
-        {{-- <div class="mt-4">
-            <label for="image" class="block text-sm font-medium text-gray-700">Edit Profile Image</label>
-            <div class="mt-1 flex items-center">
-                <label for="image" class="relative cursor-pointer bg-white rounded-md font-medium text-grey-600 hover:text-grey-500">
-                    <span>Upload a file</span>
-                    <input id="image" name="image" type="file" class="sr-only">
-                </label>
-                <span class="ml-2" id="image-file-name"></span>
-            </div>
-            <x-input-error class="mt-2" :messages="$errors->get('image')" />
-        </div> --}}
 
         <div class="mt-4">
             <label for="image" class="block text-sm font-medium text-gray-700">Profile Image</label>
