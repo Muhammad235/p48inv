@@ -10,6 +10,8 @@ use App\DataTables\UsersDataTable;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\UpdatePasswordRequest;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -26,13 +28,19 @@ class AdminController extends Controller
     public function edit()
     {
         return view('admin.dashboard.profile');
-
     }
 
-    public function update(Request $request)
+    public function update(UpdatePasswordRequest $request)
     {
-        // return view('admin.dashboard.profile');
+        // dd($request);
+        
+        $validated = $request->validated();
 
+        $request->user()->update([
+            'password' => Hash::make($validated['password']),
+        ]);
+
+        return back()->with('status', 'password-updated');
     }
 
     /**

@@ -48,7 +48,7 @@ class RegisterUserRequest extends FormRequest
             'phone_no' => ['required', 'max:15', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'username' => ['required', 'string', 'min:8', 'unique:'.User::class],
-            // 'referral_id' => ['nullable', 'string', 'min:8', 'exists:users,username']
+            'referral_id' => ['nullable', 'string', 'min:8', 'exists:users,username']
         ];
     }
 }

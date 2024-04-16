@@ -19,7 +19,7 @@ Route::group(['prefix' => 'adm', 'as' => 'admin.' ], function (){
     Route::get('/profile', [AdminController::class, 'edit'])->name('profile.edit');
     Route::post('/profile', [AdminController::class, 'update'])->name('profile.update');
 
-    Route::post('password', [AdminController::class, 'update'])->name('password.update');
+    Route::put('password', [AdminController::class, 'update'])->name('password.update');
     Route::post('logout', [AdminController::class, 'destroy'])->name('logout');
     
 });
