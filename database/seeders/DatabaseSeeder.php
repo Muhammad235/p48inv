@@ -20,17 +20,17 @@ class DatabaseSeeder extends Seeder
                 'email' => 'admin@gmail.com',
                 'role' => 'admin',
                 'phone_no' => '000000000',
-                'username' => 'admin',
+                'username' => 'administrator@p48inv.com',
                 'password' => Hash::make('admin'),
             ],
-            [
-                'name' => 'Test User',
-                'email' => 'test@gmail.com',
-                'phone_no' => '09051787849',
-                'role' => 'user',
-                'username' => 'test01',
-                'password' => Hash::make('testing01'),
-            ],
+            // [
+            //     'name' => 'Test User',
+            //     'email' => 'test@gmail.com',
+            //     'phone_no' => '09051787849',
+            //     'role' => 'user',
+            //     'username' => 'test01',
+            //     'password' => Hash::make('testing01'),
+            // ],
         ]);
 
 

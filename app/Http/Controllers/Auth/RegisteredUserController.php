@@ -39,6 +39,8 @@ class RegisteredUserController extends Controller
      */
     public function store(RegisterUserRequest $request): RedirectResponse
     {
+
+        
         $user = User::create($request->validated());
 
         $referral_id = $request->referral_id;
@@ -59,9 +61,9 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        // $userService = new UserService($request);
-        // $userService->sendUserRegistrationEmail();
-        // $userService->sendReferralUserEmail();
+        $userService = new UserService($request);
+        $userService->sendUserRegistrationEmail();
+        $userService->sendReferralUserEmail();
 
 
         Auth::login($user);

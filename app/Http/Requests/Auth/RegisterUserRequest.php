@@ -24,16 +24,16 @@ class RegisterUserRequest extends FormRequest
      *
      * @return array
      */
-    public function validationData()
-    {
-        // Get the original input data
-        $data = $this->all();
+    // public function validationData()
+    // {
+    //     // Get the original input data
+    //     $data = $this->all();
 
-        // Get the 'referral_id' from the query parameter 'ref'
-        $data['referral_id'] = $this->query('ref');
+    //     // Get the 'referral_id' from the query parameter 'ref'
+    //     $data['referral_id'] = $this->query('ref');
 
-        return $data;
-    }
+    //     return $data;
+    // }
 
     /**
      * Get the validation rules that apply to the request.
@@ -48,7 +48,14 @@ class RegisterUserRequest extends FormRequest
             'phone_no' => ['required', 'max:15', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'username' => ['required', 'string', 'min:8', 'unique:'.User::class],
-            'referral_id' => ['nullable', 'string', 'min:8', 'exists:users,username']
+            'referral_id' => ['nullable', 'string', 'exists:users,username']
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'referral_id' => 'The referral ID you entered does not exist',
         ];
     }
 }
