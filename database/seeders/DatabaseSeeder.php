@@ -17,10 +17,10 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::insert([
             [
                 'name' => 'Admin',
-                'email' => 'admin@gmail.com',
+                'email' => 'administrator@p48inv.com',
                 'role' => 'admin',
                 'phone_no' => '000000000',
-                'username' => 'administrator@p48inv.com',
+                'username' => 'administrator',
                 'password' => Hash::make('admin'),
             ],
             // [
