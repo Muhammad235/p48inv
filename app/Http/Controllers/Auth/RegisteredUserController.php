@@ -61,9 +61,9 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        $userService = new UserService($request);
-        $userService->sendUserRegistrationEmail();
-        $userService->sendReferralUserEmail();
+        // $userService = new UserService($request);
+        // $userService->sendUserRegistrationEmail();
+        // $userService->sendReferralUserEmail();
 
 
         Auth::login($user);
