@@ -22,7 +22,7 @@ class BankDetailsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'account_number' => ['required', 'integer'],
+            'account_number' => ['required'],
             'account_name' => ['required', 'string', 'max:100'],
             'bank_name' => ['required', 'string', 'max:100'],
             'address' => ['required', 'string', 'max:300'],

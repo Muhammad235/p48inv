@@ -14,9 +14,9 @@
         @csrf
         
         <div>
-            <x-input-label for="name" :value="__('Account Number')" />
-            <x-text-input id="name" name="account_number" type="text" class="mt-1 block w-full" :value="old('name', @$user->bank->account_number)" autofocus autocomplete="number" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+            <x-input-label for="account_number" :value="__('Account Number')" />
+            <x-text-input id="account_number" name="account_number" type="number" class="mt-1 block w-full" :value="old('account_number', @$user->bank->account_number)" autofocus autocomplete="number" />
+            <x-input-error class="mt-2" :messages="$errors->get('account_number')" />
         </div>
 
         <div>
