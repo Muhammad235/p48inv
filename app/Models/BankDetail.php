@@ -18,6 +18,13 @@ class BankDetail extends Model
         'address',  
     ];
 
+    protected $hidden = [
+        'account_number',
+        'account_name',
+        'bank_name',
+    ];
+
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
