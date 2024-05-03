@@ -10,31 +10,30 @@
     </header>
 
 
-    <form enctype="multipart/form-data" method="post" action="{{ route('profile.update') }}"  class="mt-6 space-y-6">
+    <form enctype="multipart/form-data" method="post" action="{{ route('bank.details.create') }}"  class="mt-6 space-y-6">
         @csrf
-        @method('patch')
         
         <div>
             <x-input-label for="name" :value="__('Account Number')" />
-            <x-text-input id="name" name="account_number" type="text" class="mt-1 block w-full" :value="old('name', @$user->account_number)" required autofocus autocomplete="name" />
+            <x-text-input id="name" name="account_number" type="text" class="mt-1 block w-full" :value="old('name', @$user->bank->account_number)" autofocus autocomplete="number" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
         <div>
             <x-input-label for="account_name" :value="__('Account Name')" />
-            <x-text-input id="account_name" class="block mt-1 w-full" type="text" name="account_name" :value="old('account_name', @$user->account_name)" required autocomplete="account_name" />
+            <x-text-input id="account_name" class="block mt-1 w-full" type="text" name="account_name" :value="old('account_name', @$user->bank->account_name)" autocomplete="name" />
             <x-input-error :messages="$errors->get('account_name')" class="mt-2" />
         </div>
 
         <div>
             <x-input-label for="bank_name" :value="__('Bank Name')" />
-            <x-text-input id="bank_name" class="block mt-1 w-full" type="text" name="bank_name" :value="old('bank_name', @$user->bank_name)" required autocomplete="bank_name" />
+            <x-text-input id="bank_name" class="block mt-1 w-full" type="text" name="bank_name" :value="old('bank_name', @$user->bank->bank_name)" autocomplete="bank_name" />
             <x-input-error :messages="$errors->get('bank_name')" class="mt-2" />
         </div>
 
         <div>
             <x-input-label for="address" :value="__('Address')" />
-            <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address', @$user->address)" required autocomplete="address" />
+            <x-text-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address', @$user->bank->address)" autocomplete="address" />
             <x-input-error :messages="$errors->get('address')" class="mt-2" />
         </div>
 

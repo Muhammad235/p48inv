@@ -31,6 +31,11 @@
         .main-color{
             color:#009933;
         }
+
+        .alert-link{
+            text-decoration: underline;
+            color: rgb(247, 239, 239) !important; 
+        }
     </style>
     <header class="header">
         <div class="header-content responsive-wrapper">
@@ -87,19 +92,36 @@
         </div>
     </header>
 
+    @auth   
+    <div class="container">
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-7">
+                {{-- @if(!localStorage.getItem('alertClosed')) --}}
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <i class="fas fa-info-circle"></i> 
+                    <strong>Hello {{ auth()->user()->name }},</strong> 
+                    kindly proceed to update your <a href="#" class="alert-link">profile</a>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {{-- @endif --}}
+            </div>
+        </div>
+    </div> 
+    @endauth
+
         <!-- Page Content -->
         {{-- <main> --}}
             {{ $slot }}
         {{-- </main> --}}
 
         <hr>
+
         <footer class="text-center mt-4">
           <div class="">
             <p class="text-center">
             @php echo date('Y') @endphp  P48 Investment Ltd. All Rights Reserved. 
           </p>
         </footer>
-
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
