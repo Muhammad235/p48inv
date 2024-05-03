@@ -23,17 +23,6 @@ class UsersDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            // ->addColumn('action', 'users.action')
-
-            // ->addColumn('id', function($query) {
-            //     $output = '';
-            
-            //     for ($i = 0; $i < $query->count(); $i++) { 
-            //         $output .= $i . ', ';
-            //     }
-            
-            //     return rtrim($output, ', '); // Remove trailing comma and space
-            // })
 
             ->addColumn('referrals', function($query){
 
@@ -44,6 +33,18 @@ class UsersDataTable extends DataTable
                 </button>";
     
                 return $showReferal;
+            })
+            ->addColumn('account_name', function ($query) {
+
+                return @$query->bank->account_name;
+            })
+            ->addColumn('account_number', function ($query) {
+
+                return @$query->bank->account_number;
+            })
+            ->addColumn('bank_name', function ($query) {
+
+                return @$query->bank->bank_name;
             })
             ->addColumn('joined_at(Y-m-d)', function ($query) {
 
@@ -93,6 +94,9 @@ class UsersDataTable extends DataTable
             Column::make('id'),
             Column::make('name'),
             Column::make('email'),
+            Column::make('account_name'),
+            Column::make('account_number'),
+            Column::make('bank_name'),
             Column::make('referrals'),
             Column::make('joined_at(Y-m-d)'),
             // Column::make('updated_at'),

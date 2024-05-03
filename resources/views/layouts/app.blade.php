@@ -92,22 +92,23 @@
         </div>
     </header>
 
-    @auth   
-    <div class="container">
-        <div class="row justify-content-center mt-4">
-            <div class="col-md-7">
-                {{-- @if(!localStorage.getItem('alertClosed')) --}}
-                <div class="alert alert-warning alert-dismissible" role="alert">
-                    <i class="fas fa-info-circle"></i> 
-                    <strong>Hello {{ auth()->user()->name }},</strong> 
-                    kindly proceed to update your <a href="#" class="alert-link">profile</a>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        @auth   
+        <div class="container">
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-7">
+                    @if(!auth()->user()->bank()->exists())
+                    <div class="alert alert-warning alert-dismissible" role="alert">
+                        <i class="fas fa-info-circle text-danger" style="font-size: 20px;"></i> 
+                        <strong>Hello {{ auth()->user()->name }},</strong> 
+                        kindly proceed to update your <a href="{{ route('profile.edit') }}" class="alert-link">bank details</a>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
                 </div>
-                {{-- @endif --}}
             </div>
-        </div>
-    </div> 
-    @endauth
+        </div> 
+        @endauth
+
 
         <!-- Page Content -->
         {{-- <main> --}}
