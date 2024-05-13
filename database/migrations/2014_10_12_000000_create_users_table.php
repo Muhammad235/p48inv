@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->enum('role', ['user', 'admin'])->default('user');
             $table->string('image')->nullable();
+            $table->date('date_of_birth')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->default(Hash::make(rand(6, 9999999999)));
             $table->rememberToken();
             $table->timestamps();
         });

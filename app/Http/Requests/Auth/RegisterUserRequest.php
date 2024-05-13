@@ -46,9 +46,14 @@ class RegisterUserRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'phone_no' => ['required', 'max:15', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            // 'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'username' => ['required', 'string', 'min:8', 'unique:'.User::class],
-            'referral_id' => ['nullable', 'string', 'exists:users,username']
+            'date_of_birth' => ['required'],
+            'referral_id' => ['nullable', 'string', 'exists:users,username'],
+            'account_number' => ['required'],
+            'account_name' => ['required', 'string', 'max:100'],
+            'bank_name' => ['required', 'string', 'max:100'],
+            'address' => ['required', 'string', 'max:300'],
         ];
     }
 

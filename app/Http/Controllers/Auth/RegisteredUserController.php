@@ -4,15 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Models\Referral;
-use App\Services\UserService;
 use Illuminate\View\View;
-use App\Mail\ReferralMail;
+use App\Models\BankDetail;
 use Illuminate\Http\Request;
-use App\Mail\UserRegistrationMail;
+use App\Services\UserService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
@@ -40,8 +37,23 @@ class RegisteredUserController extends Controller
     public function store(RegisterUserRequest $request): RedirectResponse
     {
 
-        
-        $user = User::create($request->validated());
+        // dd($request->all());
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone_no' => $request->phone_no,
+            'username' => $request->username,
+            'date_of_birth' => $request->date_of_birth,
+        ]);
+
+        BankDetail::create([
+            'user_id' => $user->id,
+            'account_number' => $request->account_number,
+            'account_name' => $request->account_name,
+            'bank_name' => $request->bank_name,
+            'address' => $request->address,
+        ]);
 
         $referral_id = $request->referral_id;
 
@@ -59,11 +71,11 @@ class RegisteredUserController extends Controller
             }
         }
 
-        event(new Registered($user));
+        // event(new Registered($user));
 
-        $userService = new UserService($request);
-        $userService->sendUserRegistrationEmail();
-        $userService->sendReferralUserEmail();
+        // $userService = new UserService($request);
+        // $userService->sendUserRegistrationEmail();
+        // $userService->sendReferralUserEmail();
 
         Auth::login($user);
         

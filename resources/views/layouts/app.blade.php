@@ -55,13 +55,13 @@
                             <div class="">
 
                                 @if (auth()->user()->image == null)
-                                  <a href="{{ route('profile.edit') }}">
+                                  {{-- <a href="{{ route('profile.edit') }}"> --}}
                                     <img alt="image" src="{{ asset('avatar_img/avatar.png') }}" class="rounded-circle mr-1" width="40" height="40"> 
-                                  </a>
+                                  {{-- </a> --}}
                                 @else
-                                <a href="{{ route('profile.edit')  }}">
+                                {{-- <a href="{{ route('profile.edit')  }}"> --}}
                                     <img alt="image" src="{{ asset('avatar_img/' . auth()->user()->image) }}" class="rounded-circle mr-1" width="40" height="40">
-                                </a>
+                                {{-- </a> --}}
                                 @endif
                                     
                             </div>
@@ -72,9 +72,9 @@
                                     </a> 
 
                                 <div class="dropdown-menu shadow" x-placement="top-start">
-                                    <a class="dropdown-item mt-2" href="{{ route('profile.edit') }}">
+                                    {{-- <a class="dropdown-item mt-2" href="{{ route('profile.edit') }}">
                                         <i class="fas fa-address-card  main-color" style="font-size: 18px;"></i> <span>Profile</span> 
-                                    </a>
+                                    </a> --}}
                                     <a class="dropdown-item" href="">
                                         <form action="{{ route('logout') }}" method="POST" class="mb-0">
                                             @csrf
@@ -92,7 +92,7 @@
         </div>
     </header>
 
-        @auth   
+        {{-- @auth   
         <div class="container">
             <div class="row justify-content-center mt-4">
                 <div class="col-md-7">
@@ -107,7 +107,7 @@
                 </div>
             </div>
         </div> 
-        @endauth
+        @endauth --}}
 
 
         <!-- Page Content -->

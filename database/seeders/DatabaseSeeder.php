@@ -28,22 +28,10 @@ class DatabaseSeeder extends Seeder
             //     'email' => 'test@gmail.com',
             //     'phone_no' => '09051787849',
             //     'role' => 'user',
+            //     'date_of_birth' => '2000-11-05',
             //     'username' => 'test01',
-            //     'password' => Hash::make('testing01'),
             // ],
         ]);
 
-
-        // $users = \App\Models\User::factory(11)->create();
-
-        // $referringUser = \App\Models\User::where('username', 'test01')->first();
-
-        // foreach ($users as $user) {
-        //     \App\Models\Referral::create([
-        //         'user_id' => $user->id,
-        //         'referred_by' => 'test01',
-        //         'referring_user_id' => $referringUser->id,
-        //     ]);
-        // }
     }
 }

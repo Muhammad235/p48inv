@@ -23,17 +23,28 @@ class UsersDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-
-            ->addColumn('referrals', function($query){
+            ->addColumn('action', function ($query) {
+                // $edit = "<a href='".route('profile.edit')."' class='btn btn-primary'><i class='fas fa-edit'></i></a>";
 
                 $referrals = Referral::with('user')->where('referred_by',  $query->username)->count();
+                $showReferal = "<div class='d-flex gap-2'><a href='".route('profile.edit', $query->id)."' class='btn btn-primary mr-3'><i class='fas fa-edit'></i></a> 
+                <button type='button' class='btn show-modal text-white' data-toggle='modal' data-target='#exampleModalLong' data-referred_by='$query->username' style='background-color:#009933;'>  
+                <i class='fas fa-users'></i> ($referrals) <i class='fas fa-caret-down'> </i>
+                </button></div>";
 
-                $showReferal = "<button type='button' class='btn show-modal text-white' data-toggle='modal' data-target='#exampleModalLong' data-referred_by='$query->username' style='background-color:#009933;'>  
-                View Referrals ($referrals) <i class='fas fa-caret-down'> </i>
-                </button>";
-    
+                // return $edit.' '.$showReferal;
                 return $showReferal;
             })
+            // ->addColumn('referrals', function($query){
+
+            //     $referrals = Referral::with('user')->where('referred_by',  $query->username)->count();
+
+            //     $showReferal = "<button type='button' class='btn show-modal text-white' data-toggle='modal' data-target='#exampleModalLong' data-referred_by='$query->username' style='background-color:#009933;'>  
+            //     View Referrals ($referrals) <i class='fas fa-caret-down'> </i>
+            //     </button>";
+    
+            //     return $showReferal;
+            // })
             ->addColumn('account_name', function ($query) {
 
                 return @$query->bank->account_name;
@@ -46,11 +57,18 @@ class UsersDataTable extends DataTable
 
                 return @$query->bank->bank_name;
             })
-            ->addColumn('joined_at(Y-m-d)', function ($query) {
+            ->addColumn('date_of_birth', function ($query) {
 
-                return $query->created_at;
+                return $query->date_of_birth;
             })
-            ->rawColumns(['action', 'referrals', 'joined_at(Y-m-d)'])
+            // ->addColumn('joined_at(Y-m-d)', function ($query) {
+
+            //     return $query->created_at;
+            // })
+            ->filter(function ($query) {
+                $query->where('role', '=', 'user');
+            })
+            ->rawColumns(['action', 'referrals', 'joined_at(Y-m-d)', 'date_of_birth'])
             ->setRowId('id');
     }
 
@@ -92,19 +110,21 @@ class UsersDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('name'),
+            Column::make('name')->width(70),
             Column::make('email'),
             Column::make('account_name'),
             Column::make('account_number'),
             Column::make('bank_name'),
-            Column::make('referrals'),
-            Column::make('joined_at(Y-m-d)'),
+            // Column::make('referrals'),
+            Column::make('date_of_birth'),
+
+            // Column::make('joined_at(Y-m-d)'),
             // Column::make('updated_at'),
-            // Column::computed('action')
-            //         ->exportable(false)
-            //         ->printable(false)
-            //         ->width(60)
-            //         ->addClass('text-center'),
+            Column::computed('action')
+                    ->exportable(false)
+                    ->printable(false)
+                    ->width(60)
+                    ->addClass('text-center'),
         ];
     }
 
