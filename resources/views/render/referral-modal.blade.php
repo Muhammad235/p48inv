@@ -1,6 +1,4 @@
 
-{{-- @dump($userReferrals) --}}
-
 <style>
   .referral-table{
     overflow-x: scroll;

@@ -24,27 +24,16 @@ class UsersDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
-                // $edit = "<a href='".route('profile.edit')."' class='btn btn-primary'><i class='fas fa-edit'></i></a>";
 
                 $referrals = Referral::with('user')->where('referred_by',  $query->username)->count();
                 $showReferal = "<div class='d-flex gap-2'><a href='".route('profile.edit', $query->id)."' class='btn btn-primary mr-3'><i class='fas fa-edit'></i></a> 
-                <button type='button' class='btn show-modal text-white' data-toggle='modal' data-target='#exampleModalLong' data-referred_by='$query->username' style='background-color:#009933;'>  
+                <button type='button' class='btn show-modal show-referrals-modal text-white' data-toggle='modal' data-target='#exampleModalLong' data-referred_by='$query->username' style='background-color:#009933;'>  
                 <i class='fas fa-users'></i> ($referrals) <i class='fas fa-caret-down'> </i>
                 </button></div>";
 
-                // return $edit.' '.$showReferal;
                 return $showReferal;
             })
-            // ->addColumn('referrals', function($query){
 
-            //     $referrals = Referral::with('user')->where('referred_by',  $query->username)->count();
-
-            //     $showReferal = "<button type='button' class='btn show-modal text-white' data-toggle='modal' data-target='#exampleModalLong' data-referred_by='$query->username' style='background-color:#009933;'>  
-            //     View Referrals ($referrals) <i class='fas fa-caret-down'> </i>
-            //     </button>";
-    
-            //     return $showReferal;
-            // })
             ->addColumn('account_name', function ($query) {
 
                 return @$query->bank->account_name;

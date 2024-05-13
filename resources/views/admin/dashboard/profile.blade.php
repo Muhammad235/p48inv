@@ -9,10 +9,14 @@
     <div class="section-body">
         <div class="card" style="border-top:2px #009933 solid;">
             <div class="card-header">
-              <h4>Profile Information</h4>
+              <h4>Profile Information</h4>      
             </div>
+            
+              <!-- Session Status -->
+              <x-auth-session-status class="mb-3 ml-5" :status="session('status')" />
+
             <div class="card-body">
-              <form enctype="multipart/form-data" method="POST" action="{{ route('profile.update') }}">
+              <form enctype="multipart/form-data" method="POST" action="{{ route('profile.update',  auth()->id()) }}">
                 @csrf
                 @method('patch')
                 <div class="form-group">
@@ -55,7 +59,6 @@
                     <p class="text-danger">{{ $message }}</p>
                   @enderror
                 </div>
-
                   <button class="btn text-white" type="submit" style="background-color:#009933;">Save</button>
               </form>
             </div>
@@ -92,7 +95,6 @@
                       <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
-
                 <button class="btn text-white" type="submit" style="background-color:#009933;">Save</button>
               </form>
             </div>

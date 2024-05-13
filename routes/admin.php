@@ -12,8 +12,9 @@ Route::group(['prefix' => 'adm', 'as' => 'admin.' ], function (){
     Route::post('login', [AdminController::class, 'login'])->name('login');
 
     Route::get('dashboard', [AdminController::class,'dashboard'])    
-                // ->middleware(['auth', 'verified'])
+                ->middleware(['auth', 'verified'])
                 ->name('dashboard');
+
     Route::get('/referral-details', [AdminController::class, 'ReferralDetails'])->name('referral.details');
 
     Route::get('/profile', [AdminController::class, 'edit'])->name('profile.edit');

@@ -3,12 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -61,16 +62,18 @@ class User extends Authenticatable
 
     }
 
-    // public function getDateOfBirthAttribute($value)
-    // {
-    //     return date_format($value,'d-m-y') ?: ''; 
-    // }
 
-    // protected function DateOfBirth(): Attribute
-    // {
-    //     return Attribute::make(
-    //         get: fn (string $value) => date_format($value,'d-m-y'),
-    //     );
-    // }
+    public function scopeUserCelebratingBirthdayThisWeek($query)
+    {
+        $startOfWeek = Carbon::now()->startOfWeek();
+        $endOfWeek = Carbon::now()->endOfWeek();
+    
+        return $query->whereMonth('date_of_birth', '=', $startOfWeek->month)
+                     ->whereDay('date_of_birth', '>=', $startOfWeek->day)
+                     ->whereMonth('date_of_birth', '=', $endOfWeek->month)
+                     ->whereDay('date_of_birth', '<=', $endOfWeek->day)
+                     ->get();
+    }
+    
 
 }

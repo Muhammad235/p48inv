@@ -31,9 +31,7 @@ class AdminController extends Controller
     }
 
     public function update(UpdatePasswordRequest $request)
-    {
-        // dd($request);
-        
+    {        
         $validated = $request->validated();
 
         $request->user()->update([
@@ -60,7 +58,6 @@ class AdminController extends Controller
 
     public function ReferralDetails(Request $request)
     {
-
         $userReferrals = Referral::with('user')->where('referred_by',  $request->referred_by)->get();
 
         return view('render.referral-modal', compact('userReferrals'))->render();        

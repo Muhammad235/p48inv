@@ -48,8 +48,8 @@ Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth', 
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile/{user}', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::post('/bank-details', [BankDetailsController::class, 'store'])->name('bank.details.create');
+    Route::patch('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/bank-details/{user}', [BankDetailsController::class, 'update'])->name('bank.details.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 

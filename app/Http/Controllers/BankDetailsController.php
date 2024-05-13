@@ -3,22 +3,21 @@
 namespace App\Http\Controllers;
 
 
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\BankDetailsRequest;
 
 class BankDetailsController extends Controller
 {
-    public function store(BankDetailsRequest $request) : RedirectResponse
+    public function update(BankDetailsRequest $request, User $user) : RedirectResponse
     {
 
         $data = $request->validated();
 
-        $user = auth()->user();
-
         $user->bank()->updateOrCreate(['user_id' => $user->id], $data);
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::back()->with('status', 'profile-updated');
     }
 }

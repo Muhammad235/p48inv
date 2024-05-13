@@ -4,15 +4,20 @@
 <section class="section">
     <div class="section-header">
       <h1>{{ $user->name }} Profile update</h1>
+
     </div>
 
     <div class="section-body">
         <div class="card" style="border-top:2px #009933 solid;">
             <div class="card-header">
-              <h4>Profile Information</h4>
+              <h4>Profile Information </h4>
             </div>
+
+              <!-- Session Status -->
+              <x-auth-session-status class="mb-3 ml-5" :status="session('status')" />
+
             <div class="card-body">
-              <form enctype="multipart/form-data" method="POST" action="{{ route('profile.update') }}">
+              <form enctype="multipart/form-data" method="POST" action="{{ route('profile.update', $user->id) }}">
                 @csrf
                 @method('patch')
                 {{-- <div class="form-group">
@@ -26,7 +31,7 @@
                 </div> --}}
                 <div class="form-group">
                     <label>Name</label>
-                    <input type="text" class="form-control" name="name" value="{{ $user->name}}">
+                    <input type="text" class="form-control" name="name" value="{{ $user->name }}">
                     @error('name')
                       <p class="text-danger">{{ $message }}</p>
                     @enderror
@@ -66,14 +71,14 @@
             <h4>Bank Information</h4>
           </div>
           <div class="card-body">
-            <form enctype="multipart/form-data" method="POST" action="{{ route('profile.update') }}">
+            <form enctype="multipart/form-data" method="POST" action="{{ route('bank.details.update', $user->id) }}">
               @csrf
               @method('patch')
 
               <div class="form-group">
                   <label>Account Number</label>
                   <input type="number" class="form-control" name="account_number" value="{{ $user->bank->account_number}}">
-                  @error('account_number')
+                  @error('account_number')user->id
                     <p class="text-danger">{{ $message }}</p>
                   @enderror
               </div>
@@ -112,7 +117,7 @@
               <h4>Update Password</h4>
             </div>
             <div class="card-body">
-              <form method="POST" action="{{ route('admin.password.update') }}">
+              <form method="POST" action="{{ route('admin.password.update', user->id) }}">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
