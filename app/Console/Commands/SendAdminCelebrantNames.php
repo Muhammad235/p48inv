@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Mail\CelebrantMail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 
@@ -14,7 +15,7 @@ class SendAdminCelebrantNames extends Command
      *
      * @var string
      */
-    protected $signature = 'schedule:birthday-emails';
+    protected $signature = 'send:birthday-email';
 
     /**
      * The console command description.
@@ -38,22 +39,15 @@ class SendAdminCelebrantNames extends Command
                      ->get();
     
         if($users->isNotEmpty()) {
-            // $userDetails = $users->map(function ($user) {
-            //     return "<li>{$user->name} ({$user->email}) - " . date('jS F', strtotime($user->date_of_birth)) . "</li>";
-            // })->implode('');
-            
 
-            // $subject = config('app.name') . ' Birthday Celebrants';
+            $adminEmail = 'adelekeyahaya05@gmail.com'; 
+            // $adminEmail = 'administrator@p48inv.com'; 
 
-            // $adminEmail = 'adelekeyahaya05@gmail.com'; 
+            Mail::to($adminEmail)->send(new CelebrantMail($users));
 
-            // Mail::raw("Hello admin,<br><br>Here are the list of users celebrating birthdays this week:<br><ul>{$userDetails}</ul>", function ($message) use ($adminEmail, $subject) {
-            //     $message->to($adminEmail)->subject($subject);
-            // });
+            $this->info('Birthday reminder email sent to admin.');
+
         }
-
-    
-        // $this->info('Birthday reminder email sent to admin.');
 
         $this->info(print_r($users->toArray(), true));
     }

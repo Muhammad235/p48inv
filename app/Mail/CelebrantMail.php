@@ -13,13 +13,13 @@ class CelebrantMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $users;
+    // public $users;
     /**
      * Create a new message instance.
      */
-    public function __construct($users)
+    public function __construct(private $users)
     {
-        $this->users = $users;
+        // $this->users = $users;
     }
 
     /**
@@ -28,7 +28,7 @@ class CelebrantMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: config('app.name') . ' Birthday Celebrants',
+            subject: config('app.name') . ' Birthday Celebrants 🎉',
         );
     }
 

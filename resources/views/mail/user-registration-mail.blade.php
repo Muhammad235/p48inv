@@ -15,9 +15,6 @@ If you have any questions or need assistance, feel free to reach out to our supp
 {{ config('app.mail_address') }}.
 
 
-{{-- Warm regards,
-{{config('app.name', 'P48InvestmentLtd')}} --}}
-
 <x-mail::button :url="url('/dashboard')">
 Go to dashboard
 </x-mail::button>

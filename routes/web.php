@@ -1,5 +1,6 @@
 <?php
 
+use App\Mail\CelebrantMail;
 use App\Mail\UserRegistrationMail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -25,6 +26,30 @@ use App\Http\Controllers\BankDetailsController;
 //     ];
 
 //     $mail  = new UserRegistrationMail($data);
+    
+//     echo $mail->render();
+
+// })->name('mail');
+
+
+// Route::get('/mail-preview', function(){
+//     $data =[ 
+//         [
+//             'name' => 'muhammad',
+//             'email' => 'vajykepi@mailinator.com',
+//             'username' => 'vajykepi',
+//             'date_of_birth' => "2000-05-15",
+//         ],
+//         [
+//             'name' => 'muhammad',
+//             'email' => 'adelekeyahaya05@gmail.com',
+//             'username' => 'adeleke01',
+//             'date_of_birth' => "2002-05-16",
+//         ],
+    
+//     ];
+
+//     $mail  = new CelebrantMail($data);
     
 //     echo $mail->render();
 

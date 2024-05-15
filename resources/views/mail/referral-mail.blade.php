@@ -4,7 +4,7 @@
 
 A new member just registered using your referral ID.
 
-<x-mail::button :url="''">
+<x-mail::button :url="url('/dashboard')">
 Go to dashboard
 </x-mail::button>
 

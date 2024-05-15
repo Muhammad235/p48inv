@@ -37,8 +37,6 @@ class RegisteredUserController extends Controller
     public function store(RegisterUserRequest $request): RedirectResponse
     {
 
-        // dd($request->all());
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -71,11 +69,11 @@ class RegisteredUserController extends Controller
             }
         }
 
-        // event(new Registered($user));
+        event(new Registered($user));
 
-        // $userService = new UserService($request);
-        // $userService->sendUserRegistrationEmail();
-        // $userService->sendReferralUserEmail();
+        $userService = new UserService($request);
+        $userService->sendUserRegistrationEmail();
+        $userService->sendReferralUserEmail();
 
         Auth::login($user);
         
