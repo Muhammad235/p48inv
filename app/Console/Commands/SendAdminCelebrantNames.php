@@ -40,16 +40,15 @@ class SendAdminCelebrantNames extends Command
     
         if($users->isNotEmpty()) {
 
-            $adminEmail = 'adelekeyahaya05@gmail.com'; 
-            // $adminEmail = 'administrator@p48inv.com'; 
+            // $adminEmail = 'adelekeyahaya05@gmail.com'; 
+            $adminEmail = 'administrator@p48inv.com'; 
 
             Mail::to($adminEmail)->send(new CelebrantMail($users));
 
-            $this->info('Birthday reminder email sent to admin.');
-
+            // $this->info('Birthday reminder email sent to admin.');
         }
 
-        $this->info(print_r($users->toArray(), true));
+        // $this->info(print_r($users->toArray(), true));
     }
     
 }
