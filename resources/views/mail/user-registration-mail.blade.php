@@ -17,7 +17,7 @@ If you have any questions or need assistance, feel free to reach out to our supp
 {{ config('app.mail_address') }}.
 
 
-<x-mail::button :url="url('https://p48inv.com/app/public/login')">
+<x-mail::button :url='https://p48inv.com/app/public/login'>
 Go to dashboard
 </x-mail::button>
 
