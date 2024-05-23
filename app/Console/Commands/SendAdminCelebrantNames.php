@@ -45,7 +45,6 @@ class SendAdminCelebrantNames extends Command
 
             Mail::to($adminEmail)->send(new CelebrantMail($users));
 
-            // $this->info('Birthday reminder email sent to admin.');
         }
 
         // $this->info(print_r($users->toArray(), true));
