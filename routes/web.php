@@ -19,17 +19,17 @@ use App\Http\Controllers\BankDetailsController;
 */
 
 
-// Route::get('/mail-preview', function(){
-//     $data = [
-//         'name' => 'muhammad',
-//         'username' => 'adeleke01',
-//     ];
+Route::get('/mail-preview', function(){
+    $data = [
+        'name' => 'muhammad',
+        'username' => 'adeleke01',
+    ];
 
-//     $mail  = new UserRegistrationMail($data);
+    $mail  = new UserRegistrationMail($data);
     
-//     echo $mail->render();
+    echo $mail->render();
 
-// })->name('mail');
+})->name('mail');
 
 
 // Route::get('/mail-preview', function(){
