@@ -4,7 +4,7 @@
 
 A new member just registered using your referral ID.
 
-<x-mail::button :url='https://p48inv.com/app/public/login'>
+<x-mail::button :url="route('login')">
 Go to dashboard
 </x-mail::button>
 
