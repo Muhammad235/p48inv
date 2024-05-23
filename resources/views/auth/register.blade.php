@@ -5,28 +5,28 @@
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" placeholder="Name" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" placeholder="Email" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Username -->
         <div class="mt-4">
             <x-input-label for="username" :value="__('Username')" />
-            <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autocomplete="username" />
+            <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" placeholder="Username" required autocomplete="username" />
             <x-input-error :messages="$errors->get('username')" class="mt-2" />
         </div>
 
         <!-- Phone Number -->
         <div class="mt-4">
             <x-input-label for="phone_no" :value="__('Phone Number')" />
-            <x-text-input id="phone_no" class="block mt-1 w-full" type="number" name="phone_no" :value="old('phone_no')" required autocomplete="phone_no" />
+            <x-text-input id="phone_no" class="block mt-1 w-full" type="number" name="phone_no" :value="old('phone_no')" placeholder="Phone number" required autocomplete="phone_no" />
             <x-input-error :messages="$errors->get('phone_no')" class="mt-2" />
         </div>
 
@@ -41,21 +41,21 @@
         <!-- Bank Name -->
         <div class="mt-4">
             <x-input-label for="bank_name" :value="__('Bank Name')" />
-            <x-text-input id="bank_name" class="block mt-1 w-full" type="text" name="bank_name" :value="old('bank_name')" required autocomplete="bank" />
+            <x-text-input id="bank_name" class="block mt-1 w-full" type="text" name="bank_name" :value="old('bank_name')" placeholder="Bank Name" required autocomplete="bank" />
             <x-input-error :messages="$errors->get('bank_name')" class="mt-2" />
         </div>
 
         <!-- Account Name -->
         <div class="mt-4">
             <x-input-label for="account_name" :value="__('Account Name')" />
-            <x-text-input id="account_name" class="block mt-1 w-full" type="text" name="account_name" :value="old('account_name')" required autocomplete="name" />
+            <x-text-input id="account_name" class="block mt-1 w-full" type="text" name="account_name" :value="old('account_name')" placeholder="Account Name" required autocomplete="name" />
             <x-input-error :messages="$errors->get('account_name')" class="mt-2" />
         </div>
 
         <!-- Account Number -->
         <div class="mt-4">
             <x-input-label for="account_number" :value="__('Account Number')" />
-            <x-text-input id="account_number" class="block mt-1 w-full" type="text" name="account_number" :value="old('account_number')" required autocomplete="number" />
+            <x-text-input id="account_number" class="block mt-1 w-full" type="text" name="account_number" :value="old('account_number')" placeholder="Account Number" required autocomplete="number" />
             <x-input-error :messages="$errors->get('account_number')" class="mt-2" />
         </div>
 
